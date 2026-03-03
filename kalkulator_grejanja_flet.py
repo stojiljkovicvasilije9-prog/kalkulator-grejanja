@@ -643,9 +643,7 @@ def main(page: ft.Page):
     )
 
     calc_btn = ft.Container(
-        content=ft.ElevatedButton(
-            text="IZRAČUNAJ",
-            icon=ft.Icons.CALCULATE,
+        content=ft.ElevatedButton(content=ft.Row(controls=[ft.Icon(ft.Icons.CALCULATE), ft.Text("IZRAČUNAJ")], spacing=6),
             on_click=izracunaj,
             style=ft.ButtonStyle(
                 bgcolor={ft.ControlState.DEFAULT: ACCENT2, ft.ControlState.HOVERED: "#FF8C60"},
@@ -714,3 +712,4 @@ if __name__ == "__main__":
         port=8080,
         host="0.0.0.0",
     )
+
