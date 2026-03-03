@@ -262,7 +262,7 @@ def main(page: ft.Page):
     if ICON_PNG:
         header_icon = ft.Image(src=ICON_PNG, width=32, height=32, fit=ft.ImageFit.CONTAIN)
     else:
-        header_icon = ft.Icon(ft.icons.LOCAL_FIRE_DEPARTMENT, color=ACCENT, size=28)
+        header_icon = ft.Icon(ft.Icons.LOCAL_FIRE_DEPARTMENT, color=ACCENT, size=28)
 
     header = ft.Container(
         content=ft.Row(controls=[
@@ -645,7 +645,7 @@ def main(page: ft.Page):
     calc_btn = ft.Container(
         content=ft.ElevatedButton(
             text="IZRAČUNAJ",
-            icon=ft.icons.CALCULATE,
+            icon=ft.Icons.CALCULATE,
             on_click=izracunaj,
             style=ft.ButtonStyle(
                 bgcolor={ft.ControlState.DEFAULT: ACCENT2, ft.ControlState.HOVERED: "#FF8C60"},
