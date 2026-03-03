@@ -234,7 +234,7 @@ def main(page: ft.Page):
             content=ft.Container(
                 content=ft.Column(
                     controls=[
-                        ft.Image(src=ICON_PNG, width=220, height=220, fit=ft.ImageFit.CONTAIN),
+                        ft.Image(src=ICON_PNG, width=220, height=220, fit="contain"),
                         ft.Text("Učitavanje...", color=TEXT_SEC, size=13),
                         ft.ProgressRing(color=ACCENT, width=28, height=28, stroke_width=3),
                     ],
@@ -260,7 +260,7 @@ def main(page: ft.Page):
 
     # ── HEADER ───────────────────────────────────────────────
     if ICON_PNG:
-        header_icon = ft.Image(src=ICON_PNG, width=32, height=32, fit=ft.ImageFit.CONTAIN)
+        header_icon = ft.Image(src=ICON_PNG, width=32, height=32, fit="contain")
     else:
         header_icon = ft.Icon(ft.Icons.LOCAL_FIRE_DEPARTMENT, color=ACCENT, size=28)
 
