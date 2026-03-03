@@ -361,7 +361,7 @@ def main(page: ft.Page):
                 ], spacing=8),
                 padding=12, bgcolor=BG_CARD,
             ),
-            elevation=2, color=BG_CARD,
+            elevation=2, bgcolor=BG_CARD,
         )
         return {
             'widget': card, 'enabled': room_chk,
@@ -617,7 +617,7 @@ def main(page: ft.Page):
             ], spacing=4, scroll=ft.ScrollMode.AUTO),
             padding=16, bgcolor=BG_CARD,
         ),
-        elevation=4, color=BG_CARD,
+        elevation=4, bgcolor=BG_CARD,
     )
 
     rooms_card = ft.Card(
@@ -628,7 +628,7 @@ def main(page: ft.Page):
             ], spacing=8, scroll=ft.ScrollMode.AUTO),
             padding=16, bgcolor=BG_CARD,
         ),
-        elevation=4, color=BG_CARD,
+        elevation=4, bgcolor=BG_CARD,
     )
 
     fuels_card = ft.Card(
@@ -639,7 +639,7 @@ def main(page: ft.Page):
             ], spacing=6),
             padding=16, bgcolor=BG_CARD,
         ),
-        elevation=4, color=BG_CARD,
+        elevation=4, bgcolor=BG_CARD,
     )
 
     calc_btn = ft.Container(
@@ -678,7 +678,7 @@ def main(page: ft.Page):
             ], spacing=8, expand=True),
             padding=16, bgcolor=BG_CARD, expand=True,
         ),
-        elevation=4, color=BG_CARD, expand=True,
+        elevation=4, bgcolor=BG_CARD, expand=True,
     )
 
     body = ft.Container(
