@@ -243,7 +243,7 @@ def main(page: ft.Page):
                     spacing=16,
                 ),
                 padding=ft.padding.all(40),
-                alignment=ft.alignment.center,
+                alignment=ft.alignment.Alignment(0,0),
             ),
             shape=ft.RoundedRectangleBorder(radius=16),
         )
@@ -656,7 +656,7 @@ def main(page: ft.Page):
             ),
             width=200, height=52,
         ),
-        alignment=ft.alignment.center,
+        alignment=ft.alignment.Alignment(0,0),
         padding=ft.padding.symmetric(vertical=8),
     )
 
