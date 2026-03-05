@@ -719,12 +719,13 @@ def main(page: ft.Page):
     calc_btn = ft.Container(
         content=ft.ElevatedButton(
             content=ft.Row(controls=[
-                ft.Icon(ft.Icons.CALCULATE, color="#fff", size=20),
-                ft.Text("IZRAČUNAJ", color="#fff", size=14, weight=ft.FontWeight.BOLD),
+                ft.Icon(ft.Icons.CALCULATE, color="#000000", size=20),
+                ft.Text("IZRAČUNAJ", color="#000000", size=14, weight=ft.FontWeight.BOLD),
             ], spacing=8, alignment=ft.MainAxisAlignment.CENTER),
             on_click=izracunaj,
             style=ft.ButtonStyle(
                 bgcolor={ft.ControlState.DEFAULT: ACCENT2, ft.ControlState.HOVERED: "#FF8C60"},
+                overlay_color=ft.Colors.with_opacity(0.1, "#000000"),
                 shape=ft.RoundedRectangleBorder(radius=10),
                 padding=ft.padding.symmetric(horizontal=30, vertical=14),
             ),
@@ -786,6 +787,125 @@ def main(page: ft.Page):
         expand=True,
         padding=ft.padding.symmetric(horizontal=10, vertical=8),
     )
+
+    # ── UVODNI EKRAN SA UPUTSTVOM ────────────────────────────
+    def close_welcome(e):
+        welcome_dlg.open = False
+        page.update()
+
+    welcome_dlg = ft.AlertDialog(
+        modal=True,
+        bgcolor=BG_CARD,
+        title=ft.Row(controls=[
+            ft.Icon(ft.Icons.INFO_OUTLINE, color=ACCENT, size=24),
+            ft.Text("Kako koristiti kalkulator?", color=ACCENT,
+                    size=16, weight=ft.FontWeight.BOLD),
+        ], spacing=10),
+        content=ft.Container(
+            content=ft.Column(controls=[
+                ft.Text("Pratite sledeće korake:", color=TEXT_PRI, size=13, weight=ft.FontWeight.BOLD),
+                ft.Divider(color=BORDER, height=8),
+
+                # Korak 1
+                ft.Row(controls=[
+                    ft.Container(
+                        content=ft.Text("1", color="#000", size=12, weight=ft.FontWeight.BOLD),
+                        bgcolor=ACCENT, width=24, height=24, border_radius=12,
+                        alignment=ft.alignment.Alignment(0, 0),
+                    ),
+                    ft.Column(controls=[
+                        ft.Text("Unesite opšte podatke o objektu", color=TEXT_PRI, size=12, weight=ft.FontWeight.BOLD),
+                        ft.Text("Površina, visina plafona, vrsta objekta, spratnost", color=TEXT_SEC, size=11),
+                    ], spacing=1, expand=True),
+                ], spacing=10),
+
+                # Korak 2
+                ft.Row(controls=[
+                    ft.Container(
+                        content=ft.Text("2", color="#000", size=12, weight=ft.FontWeight.BOLD),
+                        bgcolor=ACCENT, width=24, height=24, border_radius=12,
+                        alignment=ft.alignment.Alignment(0, 0),
+                    ),
+                    ft.Column(controls=[
+                        ft.Text("Podesite zidove, izolaciju i krov", color=TEXT_PRI, size=12, weight=ft.FontWeight.BOLD),
+                        ft.Text("Materijal, debljina, izolacija spolja/unutra/plafon", color=TEXT_SEC, size=11),
+                    ], spacing=1, expand=True),
+                ], spacing=10),
+
+                # Korak 3
+                ft.Row(controls=[
+                    ft.Container(
+                        content=ft.Text("3", color="#000", size=12, weight=ft.FontWeight.BOLD),
+                        bgcolor=ACCENT, width=24, height=24, border_radius=12,
+                        alignment=ft.alignment.Alignment(0, 0),
+                    ),
+                    ft.Column(controls=[
+                        ft.Text("Podesite broj soba", color=TEXT_PRI, size=12, weight=ft.FontWeight.BOLD),
+                        ft.Text("Površina se automatski raspoređuje — možete je ručno izmeniti.\nZa svaku sobu unesite površinu prozora i tip prozora.", color=TEXT_SEC, size=11),
+                    ], spacing=1, expand=True),
+                ], spacing=10),
+
+                # Korak 4
+                ft.Row(controls=[
+                    ft.Container(
+                        content=ft.Text("4", color="#000", size=12, weight=ft.FontWeight.BOLD),
+                        bgcolor=ACCENT, width=24, height=24, border_radius=12,
+                        alignment=ft.alignment.Alignment(0, 0),
+                    ),
+                    ft.Column(controls=[
+                        ft.Text("Izaberite goriva i unesite cenu energije", color=TEXT_PRI, size=12, weight=ft.FontWeight.BOLD),
+                        ft.Text("Štiklirajte goriva za koja želite prikaz troškova", color=TEXT_SEC, size=11),
+                    ], spacing=1, expand=True),
+                ], spacing=10),
+
+                # Korak 5
+                ft.Row(controls=[
+                    ft.Container(
+                        content=ft.Text("5", color="#000", size=12, weight=ft.FontWeight.BOLD),
+                        bgcolor=ACCENT2, width=24, height=24, border_radius=12,
+                        alignment=ft.alignment.Alignment(0, 0),
+                    ),
+                    ft.Column(controls=[
+                        ft.Text("Kliknite IZRAČUNAJ", color=ACCENT2, size=12, weight=ft.FontWeight.BOLD),
+                        ft.Text("Dobijate preporučenu snagu kotla, mesečne i godišnje troškove po gorivu", color=TEXT_SEC, size=11),
+                    ], spacing=1, expand=True),
+                ], spacing=10),
+
+                ft.Divider(color=BORDER, height=8),
+                ft.Row(controls=[
+                    ft.Icon(ft.Icons.CHECK_BOX_OUTLINED, color=GREEN, size=16),
+                    ft.Text("Zeleni checkbox = parametar aktivan", color=TEXT_SEC, size=11),
+                    ft.Container(width=16),
+                    ft.Icon(ft.Icons.CHECK_BOX_OUTLINE_BLANK, color=RED, size=16),
+                    ft.Text("Crveni = isključen", color=TEXT_SEC, size=11),
+                ], spacing=6),
+                ft.Text(
+                    "Autor: Vasilije Stojiljković | ETS Nikola Tesla, Niš",
+                    color=TEXT_MUTED, size=10, italic=True,
+                ),
+            ], spacing=10, width=480),
+            padding=ft.padding.only(top=8),
+        ),
+        actions=[
+            ft.ElevatedButton(
+                content=ft.Row(controls=[
+                    ft.Icon(ft.Icons.PLAY_ARROW, color="#000", size=18),
+                    ft.Text("POČNI SA RADOM", color="#000", size=13, weight=ft.FontWeight.BOLD),
+                ], spacing=6),
+                on_click=close_welcome,
+                style=ft.ButtonStyle(
+                    bgcolor={ft.ControlState.DEFAULT: ACCENT, ft.ControlState.HOVERED: "#00FF8C"},
+                    shape=ft.RoundedRectangleBorder(radius=8),
+                    padding=ft.padding.symmetric(horizontal=24, vertical=12),
+                ),
+            ),
+        ],
+        actions_alignment=ft.MainAxisAlignment.CENTER,
+        shape=ft.RoundedRectangleBorder(radius=16),
+    )
+    page.overlay.append(welcome_dlg)
+    # Prikaži uputstvo nakon što se splash zatvori (2.6s)
+    threading.Timer(2.6, lambda: [setattr(welcome_dlg, 'open', True), page.update()]).start()
 
     page.add(ft.Column(controls=[header, body, footer], spacing=0, expand=True))
     page.update()
